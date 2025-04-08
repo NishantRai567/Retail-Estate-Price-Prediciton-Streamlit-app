@@ -16,6 +16,7 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 from sklearn.ensemble import RandomForestRegressor
+import time
 
 # Import housing data
 
