@@ -16,7 +16,6 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 from sklearn.ensemble import RandomForestRegressor
-import time
 
 # Import housing data
 
@@ -61,7 +60,7 @@ r2_score(y_pred,y_test)
 # Random Forest
 
 model=Pipeline(steps=[("preprocessing_pipeline", transformer),
-                    ("regressor", RandomForestRegressor(random_state=42))])
+                    ("regressor", RandomForestRegressor(n_estimators=50, max_depth=10, random_state=42))])
 
 model.fit(X_train,y_train)
 y_pred_class=model.predict(X_test)
@@ -69,7 +68,7 @@ r2_score(y_test,y_pred_class)
 
 # Save Pipeline
 
-joblib.dump(model,"retail_model.joblib")
+joblib.dump(model,"retail_model.joblib",compress=3)
 
 
 ###############################################################################
