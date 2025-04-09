@@ -24,6 +24,8 @@ california_housing=fetch_california_housing()
 
 df=pd.DataFrame(california_housing.data,columns=california_housing.feature_names)
 
+df.drop(["Latitude","Longitude"],axis=1,inplace=True)
+
 df["Price"]=california_housing.target
 
 # Split data into inputs and outputs
@@ -94,15 +96,13 @@ st.subheader("House Features")
     
 
 input_data = {
-    'MedInc': st.number_input("Median Income(in thousands if dollars)", min_value=0, max_value=15, value=8),
+    'MedInc': st.number_input("Median Income(in thousands of dollars)", min_value=0, max_value=15, value=8),
     'AveOccup': st.number_input("Average Occupancy(people per household)", min_value=0, max_value=10, value=2),
     'AveRooms': st.number_input("Average Rooms", min_value=0, max_value=10, value=6),
     'AveBedrms': st.number_input("Average Bedrooms", min_value=0, max_value=10, value=1),
     'Population': st.number_input("Population(number of people in the area)", min_value=0, max_value=1000000, value=500),
-    'HouseAge': st.number_input("House Age(years)", min_value=0, max_value=100, value=20),
-    'Latitude': st.number_input("Latitude(degrees)", min_value=32, max_value=34, value=34),
-    'Longitude': st.number_input("Longitude(degrees)", min_value=-120, max_value=-118, value=-118)
-}
+    'HouseAge': st.number_input("House Age(years)", min_value=0, max_value=100, value=20)}
+    
 
 
 
